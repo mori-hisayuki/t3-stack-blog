@@ -1,0 +1,16 @@
+x-node_app: &node_app
+  build:
+    context: .
+    dockerfile: ./docker/node/Dockerfile
+  # ゾンビプロセス防止
+  init: true
+  volumes:
+    - .:/develop
+    - node_modules:/develop/node_modules
+
+services:
+  node:
+    <<: *node_app
+
+volumes:
+  node_modules:

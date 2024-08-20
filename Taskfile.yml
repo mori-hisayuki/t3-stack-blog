@@ -21,3 +21,6 @@ tasks:
   pnpm:
     # pnpmを実行するTask
     cmd: $COMPOSE run --rm node pnpm {{.CLI_ARGS}}
+  pnpx:
+    # pnpmを実行するTask
+    cmd: $COMPOSE run --rm node pnpx {{.CLI_ARGS}}

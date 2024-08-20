@@ -1,0 +1,23 @@
+version: 3
+env:
+  COMPOSE: docker-compose
+
+tasks:
+  setup:
+    deps: [container-build, up]
+    cmds:
+      - echo 'setup done'
+  container-build:
+    internal: true
+    cmd: $COMPOSE build
+  up:
+    internal: true
+    cmd: $COMPOSE up -d
+  down:
+    cmd: $COMPOSE down
+  install:
+    # pnpm installを実行するTask
+    cmd: $COMPOSE run --rm node pnpm install
+  pnpm:
+    # pnpmを実行するTask
+    cmd: $COMPOSE run --rm node pnpm {{.CLI_ARGS}}
